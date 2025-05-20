@@ -65,7 +65,7 @@ para utilizar a CLI do Angular usamos a flag: ng
 
 ng --version - para ver a versão do Angular instalado
 
-ng new meu-primmeiro-projeto-Angular - new = novo projeto + o nome do projeto
+ng new meu-primeiro-projeto-Angular - new = novo projeto + o nome do projeto
 
 
 Server-Side Rendering (SSR)
@@ -115,6 +115,9 @@ export class AppComponent {
   title = 'streaming';
 }
 
+@Component({ ... }) - É o decoretor que referencia/especifica que a classe/arquivo atual se trata de um componente, e so então o Angular quando for fazer a renderização vai tratar como um componente e renderiza-lo
+
+
 
 fora esses 4 arquivos que compoem cada componente dentro da pasta app fica dois arquivos que não é sobre o componente mas sobre configurações globais do projeto Angular
 
@@ -136,3 +139,20 @@ export const routes: Routes = [
     path: "home",
     component: HomeComponent
 ];
+
+
+ - Para criar um novo componente:
+
+ ng generate component components/home
+
+ isso vai criar uma pasta chamada components e dentro dela outra pasta chamado home que será o componente
+
+- Roteamento do componente
+ 
+ meu arquivo .html do componente:
+ <app-home></app-home>
+ <router-outlet />
+
+aqui é meu app componente, e nele estou pedindo para renderizar meu outro componente que é o HomeComponent, mas ele só vai fazer o roteamento se tiver essa tag:
+
+ <router-outlet /> - reflete minhas rotas
