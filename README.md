@@ -156,3 +156,6 @@ export const routes: Routes = [
 aqui é meu app componente, e nele estou pedindo para renderizar meu outro componente que é o HomeComponent, mas ele só vai fazer o roteamento se tiver essa tag:
 
  <router-outlet /> - reflete minhas rotas
+
+
+ESTADOS - Falaremos sobre dados dinâmicos, como por exemplo um nome especifico de maneira dinamica puxando a informação de alguma variável/objeto/array
