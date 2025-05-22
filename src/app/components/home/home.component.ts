@@ -7,17 +7,21 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-   meuBoleano = false;
+meuBoleano = true;
 
-   atualizarBoleano(valor: boolean) {
-    this.meuBoleano = valor; 
-    console.log(this.meuBoleano);
-   }
+bolean(valor:boolean) {
+  this.meuBoleano = valor;
+  console.log(this.meuBoleano);
+}
+
+titulo = 'Título do Componente';
+deveMostrarTitulo = true;
+
 
    name = 'Angular';
    idButton = 'botao1';
-   onClick() {
+   submit(event: any) {
     // Aqui você pode adicionar a lógica que deseja executar quando o botão for clicado
-    console.log('Botão clicado!');
+    console.log(event);
    }
 }
