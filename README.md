@@ -1,161 +1,258 @@
-# Streaming
+Este é um projeto simples em Angular (versão 19.2.12) criado para aprender conceitos básicos do framework, como componentes, roteamento, estados dinâmicos, condicionais, loops e serviços. Ele serve como um playground para desenvolvedores juniores praticarem Angular, com exemplos práticos de manipulação de dados e interação com APIs. Este README explica como rodar o projeto, entender sua estrutura e contribuir.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.12.
+Funcionalidades
 
-## Development server
+Exibe um título dinâmico que pode ser alternado com um botão.
 
-To start a local development server, run:
 
-```bash
+Renderiza uma lista de itens usando loops.
+
+
+Usa condicionais para mostrar/esconder elementos com base em estados.
+
+
+Inclui um serviço para simular envio de formulários (com possibilidade de integração com uma API).
+
+
+
+Suporta Server-Side Rendering (SSR) para aprendizado de SEO e performance.
+
+
+
+Angular CLI (v19.2.12): Instale com npm install -g @angular/cli
+
+
+VS Code (opcional): Instale a extensão REST Client para testar APIs.
+
+
+Inicie o servidor de desenvolvimento:
+
 ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
 
 
-CLI - interface de linha de comando 
-
-para utilizar a CLI do Angular usamos a flag: ng 
-
-ng --version - para ver a versão do Angular instalado
-
-ng new meu-primeiro-projeto-Angular - new = novo projeto + o nome do projeto
+Acesse http://localhost:4200 no navegador. Alterações no código recarregam automaticamente.
 
 
-Server-Side Rendering (SSR)
+(Opcional) Rode com SSR:
 
-Single-Page-Application (SPA) - o Angula por padrão é SPA, oque quer dizer que por padrão o browser vê o Angular apenas como single-page apenas uma pagina, para o usuario ele troca de paginas como se tivesse varias paginas, e oque faz isso é o javascript por de baixo dos panos, mas na verdade o browser vai enchergar a aplicação Angular como apenas uma pagina.
-o browser vai enchergar apenas o index.html e ele vai chamar todos os módulos e componentes, diferente do reteamento de páginas que estamos acostumados aonde quando queremos levar o usuario para outra tela inserimos um <a href="" /> apontando para outro arquivo .html, no SPA o browser vai enchergar apenas esse index.html que fica na raiz da pasta src do angular, e esse html vai chamar modulos e componentes e o js vai fazer a renderização e o roteamento entre eles dando a ideia de que há varias páginas.
+npm run dev:ssr
 
-o index.html puxa o componente atravez do:
+Estrutura do projeto
 
-<body>
-  <app-root></app-root>
-</body>
 
-referenciando o seletor do componente, esse seletor é definido no arquivo:
 
-app.components.ts :
+src/app/: Contém o código principal do Angular.
 
-@Component({
-  selector: 'app-root',
-})
 
-quando o componente é criado tbm 4 arquivos que juntos compoem o componento eles são:
 
-imagine um componente chamado app
+app.component.*: Componente raiz, define o layout principal com <router-outlet>.
 
-então será criado uma pasta chamada 
 
-app
 
-que dentro dessa pasta vai ter os 4 arquivos:
+components/home/: Componente HomeComponent para a página inicial, com exemplos de estados, condicionais e loops.
 
-app.component.css
 
-app.component.html
+services/envia-formulario.service.ts: Serviço para simular envio de dados (ex.: a um backend).
 
-app.component.spec.ts
 
-app.component.ts  -  que é aonde é definido o seletor com o nome que será inserido no arquivo .html para exibi-lo entre outras coisas como:
+app-routing.module.ts: Define rotas (ex.: / e /home → HomeComponent).
+
+
+app.config.ts: Configurações globais (ex.: roteamento, detecção de mudanças).
+
+
+src/assets/: Para arquivos estáticos (ex.: imagens).
+
+
+angular.json: Configurações de build e CLI.
+
+
+package.json: Dependências e scripts (ex.: ng serve, ng build).
+
+Como o projeto foi criado
+
+
+Iniciando o projeto:
+
+ng new angular-learning --style=css --routing=true --ssr=true
+
+
+Inclui roteamento e SSR para aprendizado.
+
+
+Criando componentes:
+
+ng generate component components/home
+
+
+Criando serviços:
+
+ng generate service services/envia-formulario
+
+
+Configurando rotas:
+
+
+
+Definidas em app-routing.module.ts para mapear URLs a componentes.
+
+Conceitos básicos do Angular
+
+Componentes
+
+Componentes são blocos de construção do Angular, compostos por:
+
+
+.ts: Lógica (ex.: variáveis, funções).
+
+
+.html: Template para a interface.
+
+
+.css: Estilos.
+
+
+.spec.ts: Testes.
+
+Exemplo no HomeComponent:
+
+// home.component.ts
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css'],
 })
-export class AppComponent {
-  title = 'streaming';
+export class HomeComponent {
+  title = 'Angular Learning';
 }
 
-@Component({ ... }) - É o decoretor que referencia/especifica que a classe/arquivo atual se trata de um componente, e so então o Angular quando for fazer a renderização vai tratar como um componente e renderiza-lo
+<!-- home.component.html -->
+<h1>{{ title }}</h1>
 
+Roteamento
 
+Rotas mapeiam URLs a componentes:
 
-fora esses 4 arquivos que compoem cada componente dentro da pasta app fica dois arquivos que não é sobre o componente mas sobre configurações globais do projeto Angular
-
-app.config.ts: é um arquivo de configuração que vai dizer ao Angular como ele deve renderizer os nossos componentes, como por exemplo quais providers ele deve injetar, como o angular deve fazer a injeção das coisas, e ai o angular cuida de renderizar nossos componentes:
-
-export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)]
-};
-
-providers - 
-
-provideZoneChangeDetection - é um provider padrão, vai detectar mudanças e então renderizar de novo
-
-provideRouter - para prover as rotas da nossa aplicação, o Angular tem um módulo especifico para fazer as rotas que é o provideRouter, e esse provideRouter nada mais ta fazendo do que prover as rotas de acordo com o arquivo routes que é aonde defino meu componentes de acordo com a url que será acessado, e ai o provideRouter faz o roteamento entre os componentes, que no arquivo routes é definido assim: 
-
-app.routes.ts 
+// app-routing.module.ts
+import { Routes } from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
 
 export const routes: Routes = [
-    path: "home",
-    component: HomeComponent
+  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
 ];
 
 
- - Para criar um novo componente:
 
- ng generate component components/home
+<router-outlet> no app.component.html renderiza o componente da rota.
 
- isso vai criar uma pasta chamada components e dentro dela outra pasta chamado home que será o componente
+Estados (Dados Dinâmicos)
 
-- Roteamento do componente
- 
- meu arquivo .html do componente:
- <app-home></app-home>
- <router-outlet />
+Estados são dados que mudam na interface, como variáveis, objetos ou arrays, usados para criar interatividade.
 
-aqui é meu app componente, e nele estou pedindo para renderizar meu outro componente que é o HomeComponent, mas ele só vai fazer o roteamento se tiver essa tag:
+Variável:
 
- <router-outlet /> - reflete minhas rotas
+// home.component.ts
+export class HomeComponent {
+  nome = 'Angular'; // Variável simples
+}
+
+<!-- home.component.html -->
+<p>Olá, {{ nome }}!</p>
+
+Objeto:
+
+export class HomeComponent {
+  usuario = { nome: 'Luana', idade: 25 }; // Objeto
+}
+
+<p>Nome: {{ usuario.nome }} - Idade: {{ usuario.idade }}</p>
+
+Array:
+
+export class HomeComponent {
+  itens = ['Item 1', 'Item 2', 'Item 3']; // Array
+}
+
+@for (item of itens; track item) {
+  <p>{{ item }}</p>
+}
+
+Mudando estados:
 
 
-ESTADOS - Falaremos sobre dados dinâmicos, como por exemplo um nome especifico de maneira dinamica puxando a informação de alguma variável/objeto/array
+Use eventos para alterar estados:
+
+export class HomeComponent {
+  deveMostrarTitulo = true;
+  titulo = 'Título do Componente';
+  toggleTitulo() {
+    this.deveMostrarTitulo = !this.deveMostrarTitulo;
+  }
+}
+
+@if (deveMostrarTitulo) {
+  <h1>{{ titulo }}</h1>
+} @else {
+  <h1>Título escondido</h1>
+}
+<button (click)="toggleTitulo()">Alternar Título</button>
+
+Condicionais e Loops
+
+Condicional (@if): Mostra/esconde elementos com base em condições.
+
+@if (deveMostrarTitulo) {
+  <p>Título visível</p>
+}
+
+
+Loop (@for): Renderiza listas dinamicamente.
+
+@for (item of itens; track item) {
+  <p>{{ item }}</p>
+}
+
+Serviços
+
+Serviços gerenciam lógica reutilizável, como chamadas a APIs:
+
+// envia-formulario.service.ts
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class EnviaFormularioService {
+  submitFormtoBackend(formData: any): void {
+    console.log('Dados enviados:', formData);
+  }
+}
+
+
+
+No componente:
+
+export class HomeComponent {
+  private enviaFormularioService = inject(EnviaFormularioService);
+  submitForm() {
+    this.enviaFormularioService.submitFormtoBackend('Dados de teste');
+  }
+}
+
+<button (click)="submitForm()">Enviar</button>
+
+Comandos úteis
+
+
+
+Gerar componente:
+
+ng generate component components/nome
+
+
+Gerar serviço:
+
+ng generate service services/nome

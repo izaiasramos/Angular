@@ -2,11 +2,16 @@
 @if(deveMostrarTitulo) {
   <h1>Olá {{ titulo }}</h1>
 } @else {
-  <h1>Oi, visitante, titulo está False</h1>
+  <h1>Olá Título do Componente está False</h1>
 }
+<button (click)="deveMostrarTitulo = !deveMostrarTitulo">Mudar o valor de deveMostrarTitulo para False ou True</button>
 
-<p>Oi do video {{ name }}</p>
+@for(item of listItems; track item){
+  <h2>{{item}}</h2>
+}
+<!-- Uso de Interpolação no Angular -->
+<p>Fazer o binding do valor de uma variável {{ name }}</p>
 
 <button [attr.aria-label]="idButton">Para valores de atributos que não são nativos/default do html [attr.aria-label]="idButton"</button><!-- para acessar o valor de atributos que não são default do html -->
 <button id={{name}}>Para acessar valores de atributos nativos/default do html id={{name}}</button>
-<button (click)="submit($event)">Evento de clique chama uma função (click)="submit()</button> <!-- para fazer um binding de uma função que está na minha classe do meu componente -->
+<button (click)="submitForm()">Evento de clique chama uma função (click)="submitForm()</button> <!-- para fazer um binding de uma função que está na minha classe do meu componente -->

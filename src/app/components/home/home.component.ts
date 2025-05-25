@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-
+import { Component, inject } from '@angular/core';
+import { EnviaFormularioService } from '../../services/envia-formulario.service';
+import { Input } from '@angular/core';
 @Component({
   selector: 'app-home',
   imports: [],
@@ -7,21 +8,31 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-meuBoleano = true;
 
-bolean(valor:boolean) {
-  this.meuBoleano = valor;
-  console.log(this.meuBoleano);
-}
+  private enviaFormularioService = inject(EnviaFormularioService);
 
-titulo = 'Título do Componente';
-deveMostrarTitulo = true;
+  submitForm() {
+    // Aqui você pode adicionar a lógica que deseja executar quando o formulário for enviado
+    console.log('Formulário enviado:');
+    // Chama o serviço para enviar os dados do formulário
+    this.enviaFormularioService.submitFormtoBackend("Enviando dados do formulário");
+  }
+
+  meuBoleano = true;
+
+  bolean(valor:boolean) {
+    this.meuBoleano = valor;
+    console.log(this.meuBoleano);
+  }
+
+  listItems = ['Item 1', 'Item 2', 'Item 3'];//Lista para usar com Loop @for
+
+
+  titulo = 'Título do Componente está True';
+  deveMostrarTitulo = true;
 
 
    name = 'Angular';
    idButton = 'botao1';
-   submit(event: any) {
-    // Aqui você pode adicionar a lógica que deseja executar quando o botão for clicado
-    console.log(event);
-   }
+
 }
