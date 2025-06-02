@@ -4,14 +4,26 @@
 } @else {
   <h1>Olá Título do Componente está False</h1>
 }
+
+<h3 *ngIf="deveMostrarTitulo">Utilizando diretiva com *ngIf="deveMostrarTitulo"</h3>
+<h3 *ngIf="!deveMostrarTitulo">caso contrario com *ngIf="!deveMostrarTitulo"</h3>
 <button (click)="deveMostrarTitulo = !deveMostrarTitulo">Mudar o valor de deveMostrarTitulo para False ou True</button>
 
 @for(item of listItems; track item){
   <h2>{{item}}</h2>
+} @empty {
+  <h2>Lista Vazia</h2>
 }
+
+<p>Iterando uma lista com *ngFor="let item of listItems; track item"</p>
+<div *ngFor="let item of listItems; track item">
+  <h2>{{item}}</h2>
+</div>
 <!-- Uso de Interpolação no Angular -->
 <p>Fazer o binding do valor de uma variável {{ name }}</p>
 
 <button [attr.aria-label]="idButton">Para valores de atributos que não são nativos/default do html [attr.aria-label]="idButton"</button><!-- para acessar o valor de atributos que não são default do html -->
 <button id={{name}}>Para acessar valores de atributos nativos/default do html id={{name}}</button>
 <button (click)="submitForm()">Evento de clique chama uma função (click)="submitForm()</button> <!-- para fazer um binding de uma função que está na minha classe do meu componente -->
+
+
